@@ -18,9 +18,8 @@ const District = () => {
     
   return (
     <div>
-      <select className=" rounded-sm font-medium block w-full mb-2 px-3 mt-2 py-1x border
-             border-gray-300 placeholder-gray-500 text-gray-900 
-             sm:text-sm" id="district" name="district" as="select">
+      <label className='mx-4' htmlFor="state">Select District :</label>
+      <select className="" id="district" name="district" as="select">
           <option  value="">Select district</option>
            
           {district.map((ab) => {

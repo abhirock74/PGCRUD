@@ -3,35 +3,118 @@ import State from '../MasterTable/State';
 import District from '../MasterTable/District';
 import Block from '../MasterTable/Block';
 import Village from '../MasterTable/Village';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup'
+import axios from 'axios'
+import { Link, useNavigate } from "react-router-dom";
+
+const initialValues = {
+  state:"",
+  username: '',
+  password: ''
+}
+const validationSchema = Yup.object({
+  username: Yup.string().required('Password is required !'),
+  password: Yup.string().required('Password is required !')
+});
 
 const benificform = () => {
+  const onSubmit = values =>{
+    console.log(values);
+    axios
+    .post(
+      `http://localhost:8080/api/login`,
+      { username: values.username, password: values.password },
+    )
+    .then((res) => {
+      sessionStorage.setItem('token', (res.data.token))
+      if (res.data.token) {
+       console.log(res.data.token)
+        // navigate('/home')
+        let token = res.data.token
+        let payload = token.split(".")
+        let data = atob(payload[1]);
+        console.log(JSON.parse(data))
+
+        sessionStorage.setItem('paylode', data)
+      } else {
+        console.log("unauthorized")
+      }
+    })
+    .catch((err) => {
+    //   seterror(err.response.data.message)
+    });
+
+}
   return (
-    <>
-    <div className='mx-5 px-5 my-2'>
-    <div className='mx-5'>
-    <form className='mx-5 px-5'>
-        <State/>
-        <District/>
-        <Block/>
-        <Village/>
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
-          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-        </div>
-        <div className="form-group form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-          <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+    <div>
+  <section className="vh-100">
+  <div className="container py-5 h-100">
+    <div className="row d-flex align-items-center justify-content-center h-100">
+      <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1 border rounded p-5">
+        <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+        >
+        <Form>
+          <div className="form-outline mb-4">
+            <State/>
+            <District/>
+          <ErrorMessage className='text-red' name='username' component='p' />
+            <Field
+              type="text"
+              name="username"
+              id="username"
+              className="form-control form-control-lg"
+            />
+            <label className="form-label" htmlFor="username">
+                username
+            </label>
+          </div>
+          {/* Password input */}
+          <div className="form-outline mb-4">
+          <ErrorMessage className='text-red' name='password' component='p' />
+            <Field
+              type="password"
+              id="password"
+              name="password"
+              className="form-control form-control-lg"
+            />
+            <label className="form-label" htmlFor="password">
+              Password
+            </label>
+          </div>
+          <div className="d-flex justify-content-around align-items-center mb-4 ">
+            {/* Checkbox */}
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                defaultValue=""
+                id="form1Example3"
+                defaultChecked=""
+              />
+              <label className="form-check-label" htmlFor="form1Example3">
+                {" "}
+                Remember me{" "}
+              </label>
+            </div>
+            <a href="#!">Forgot password?</a>
+          </div>
+          {/* Submit button */}
+          <button type="submit" className="btn btn-primary btn-lg btn-block">
+            Sign in
+          </button>
+        </Form>
+        </Formik>
+        
+      </div>
     </div>
+  </div>
+</section>
+
     </div>
-    </>
   )
 }
 
