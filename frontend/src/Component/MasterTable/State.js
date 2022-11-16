@@ -28,7 +28,6 @@ const State = () => {
             const {id} = ab
             return <option key={id} value={ab.id}>{ab.state_name}</option>;
           })}
-          <option  value="newCompany">New Company</option>
         </select>
     </div>
   )
