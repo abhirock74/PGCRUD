@@ -2,36 +2,34 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-const State = () => {
-    const [state, setState]= useState([])
+const Block = () => {
+    const [block, setblock]= useState([])
     const token = sessionStorage.getItem('token');
     useEffect(()=>{
-        axios.get('http://localhost:8080/api/state',{
+        axios.get('http://localhost:8080/api/block',{
         headers: {
             "token": ` ${token}`
           }})
     .then((res)=>{
     //   console.log(res.data)
-      setState(res.data.state)
+      setblock(res.data.block)
     });
     },[])
-    // console.log("State",state)
     
   return (
     <div>
       <select className=" rounded-sm font-medium block w-full mb-2 px-3 mt-2 py-1x border
              border-gray-300 placeholder-gray-500 text-gray-900 
-             sm:text-sm" id="state" name="state" as="select">
-          <option  value="">Select State</option>
+             sm:text-sm" id="block" name="block" as="select">
+          <option  value="">Select block</option>
            
-          {state.map((ab) => {
+          {block.map((ab) => {
             const {id} = ab
-            return <option key={id} value={ab.id}>{ab.state_name}</option>;
+            return <option key={id} value={ab.id}>{ab.block_name}</option>;
           })}
-          <option  value="newCompany">New Company</option>
         </select>
     </div>
   )
 }
 
-export default State
+export default Block

@@ -1,5 +1,8 @@
 import React from 'react'
 import State from '../MasterTable/State';
+import District from '../MasterTable/District';
+import Block from '../MasterTable/Block';
+import Village from '../MasterTable/Village';
 
 const benificform = () => {
   return (
@@ -8,6 +11,9 @@ const benificform = () => {
     <div className='mx-5'>
     <form className='mx-5 px-5'>
         <State/>
+        <District/>
+        <Block/>
+        <Village/>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
           <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
