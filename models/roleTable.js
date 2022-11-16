@@ -7,12 +7,12 @@ module.exports = ((sequelize, type) => {
             autoIncrement: true
         },
 
-        fied_officer: {
+        name: {
             type: type.STRING(25),
             require: true,
             unique: {
                 args: true,
-                msg: 'State Already Exist!',
+                msg: 'Already Exist!',
             }
         },
         is_deleted: {

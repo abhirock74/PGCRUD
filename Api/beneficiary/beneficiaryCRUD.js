@@ -9,6 +9,9 @@ module.exports = {
         }
     },
     create:async (req, res)=>{
+        // console.log("decoded",req.decoded)
+        created_by = req.decoded.id;
+        // console.log(created_by)
         try {
             let {state, district, block , village , first_name, email, mobile, gender, education, address} =req.body;
             if(state && district && block && village && first_name && email && mobile && gender &&education && address){
@@ -16,7 +19,7 @@ module.exports = {
                 if(beneficiary){
                     return res.status(200).json({message:"beneficiary Already Exists"})
                 }else{
-                    let beneficiary = await  Beneficiary.create({state, district, block, village, first_name,email, mobile, gender, education, address});
+                    let beneficiary = await  Beneficiary.create({state, district, block, village, first_name,email, mobile, gender, education, address, created_by});
                     return res.status(200).json({message:"beneficiary create Successful", beneficiary:beneficiary})
                 }
             }else{

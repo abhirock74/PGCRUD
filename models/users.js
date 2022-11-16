@@ -27,10 +27,13 @@ module.exports = ((sequelize, type)=>{
             require:true
         },
         role:{
-            type: type.ENUM,
-            defaultValue: '1',
-            values: ["0", "1", "2"],
-            comment: `0: Admin  1: user 2 : viewrs`,
+            type: type.INTEGER,
+            require:true,
+            references: {
+                model: 'roles', 
+                key: 'id'
+             }
+            
         },
         is_deleted: {
             type: type.ENUM,

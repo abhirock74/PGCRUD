@@ -19,7 +19,7 @@ module.exports =((sequelize, type)=>{
             require:true,
             // foregin key of state stateID
             references: {
-                model: 'blocks', // 'fathers' refers to table name
+                model: 'blocks', // 'blocks' refers to table name
                 key: 'id', // 'id' refers to column name in state table
              }
         },

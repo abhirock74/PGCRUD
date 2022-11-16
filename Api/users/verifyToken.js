@@ -7,7 +7,7 @@ module.exports= async(req, res, next)=>{
         if(token){
             let decoded = JWT.verify(token, JWT_SECRET);
             // let {id, name, username, email, role} = decoded;
-            // req.decoded =decoded;
+            req.decoded =decoded;
             // console.log(decoded)
             next();
         }else{

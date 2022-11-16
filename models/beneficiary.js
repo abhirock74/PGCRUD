@@ -47,7 +47,7 @@ module.exports = ((sequelize, type)=>{
             require:true
         },
         mobile:{
-            type:type.INTEGER(100),
+            type:type.STRING(20),
             require:true
         },
         photo:{
@@ -91,7 +91,12 @@ module.exports = ((sequelize, type)=>{
             type: type.DATE,
         },
         created_by: {
-            type: type.INTEGER(11)
+            type: type.INTEGER(11),
+            require:true,
+            references: {
+                model: 'users',
+                key: 'id'
+             }
         },
         updated_by: {
             type: type.INTEGER(11)
