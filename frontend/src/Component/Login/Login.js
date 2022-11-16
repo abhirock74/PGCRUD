@@ -3,7 +3,7 @@ import './login.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 import axios from 'axios'
-// import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const initialValues = {
@@ -13,9 +13,10 @@ const initialValues = {
   const validationSchema = Yup.object({
     username: Yup.string().required('Password is required !'),
     password: Yup.string().required('Password is required !')
-  })
-const Login = () => {
+  });
 
+const Login = () => {
+  const navigate = useNavigate();
 const onSubmit = values =>{
     console.log(values);
     axios
@@ -27,7 +28,7 @@ const onSubmit = values =>{
       sessionStorage.setItem('token', (res.data.token))
       if (res.data.token) {
        console.log(res.data.token)
-        // navigate('/home')
+        navigate('/home')
         let token = res.data.token
         let payload = token.split(".")
         let data = atob(payload[1]);

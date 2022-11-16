@@ -1,9 +1,10 @@
-import Login from "./Component/Login/Login";
+import Router from "./Component/Router/Router";
 
 function App() {
   return (
     <>
-    <Login/>
+    <Router/>
+    
     </>
   );
 }

@@ -2,6 +2,7 @@ import React , { Component }from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../Login/Login";
 import Protected from "./Protected";
+import Home from "../Home/Home";
 
 const Router = () => {
   return (
@@ -9,8 +10,8 @@ const Router = () => {
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          {/* <Route path="/register" element={<Register />} /> */}
-          {/* <Route path="/home" element={<Protected Component={HomePage} />} /> */}
+          {/* <Route path="/home" element={<Home />} /> */}
+          <Route path="/home" element={<Protected Component={Home} />} />
 
         </Routes>
       </BrowserRouter>

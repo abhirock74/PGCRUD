@@ -1,8 +1,9 @@
 const Beneficiary = require('../../models/beneficiary');
 module.exports = {
     findAll: async (req, res)=>{
+        created_by = req.decoded.id;
         try {
-            let beneficiary = await  Beneficiary.findAll();
+            let beneficiary = await  Beneficiary.findAll({where:{created_by}});
             return res.status(200).json({message:"beneficiary List", beneficiary:beneficiary})
         } catch (error) {
             return res.status(500).json({message: error.message})
