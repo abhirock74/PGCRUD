@@ -5,7 +5,7 @@ import axios from "axios";
 import {useNavigate } from "react-router-dom";
 
 const AddFieldOfficer = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
         },
@@ -27,7 +27,7 @@ const AddFieldOfficer = () => {
             // console.log(res);
             console.log(res.data.message);
             if(res.data.message=="user create Successful"){
-              // navigate('/fieldofficer');
+              navigate('/fieldofficer');
             }
           })
           .catch((err) => {
