@@ -28,7 +28,7 @@ const onSubmit = values =>{
       sessionStorage.setItem('token', (res.data.token))
       if (res.data.token) {
        console.log(res.data.token)
-        navigate('/home')
+        navigate('/benificarylists')
         let token = res.data.token
         let payload = token.split(".")
         let data = atob(payload[1]);

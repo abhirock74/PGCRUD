@@ -11,7 +11,7 @@ module.exports = {
     create:async (req, res)=>{
         try {
             let { name, username, password, email, role} =req.body;
-            if(username && name && password && email){
+            if(username && name && password && email && role){
                 let user = await  Users.findOne({where:{username:username}});
                 if(user){
                     return res.status(200).json({message:"user Already Exists"})
@@ -20,7 +20,7 @@ module.exports = {
                     return res.status(200).json({message:"user create Successful", user:user})
                 }
             }else{
-            return res.status(200).json({message:"username && name && password && email role(defult=user) are require"})
+            return res.status(200).json({message:"username && name && password && email role(defult= 2=Fied Officer, 1=Admin ) are require"})
             }
         } catch (error) {
             return res.status(500).json({message: error.message})

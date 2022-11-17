@@ -10,17 +10,17 @@ module.exports = {
     },
     create:async (req, res)=>{
         try {
-            let {fied_officer} =req.body;
-            if(fied_officer){
-                let role = await  Role.findOne({where:{fied_officer}});
+            let {name} =req.body;
+            if(name){
+                let role = await  Role.findOne({where:{name}});
                 if(role){
                     return res.status(200).json({message:"role Already Exists"})
                 }else{
-                    let role = await  Role.create({fied_officer});
+                    let role = await  Role.create({name});
                     return res.status(200).json({message:"role create Successful", role:role})
                 }
             }else{
-            return res.status(200).json({message:"fied_officer is require"})
+            return res.status(200).json({message:"name is require"})
             }
         } catch (error) {
             return res.status(500).json({message: error.message})
