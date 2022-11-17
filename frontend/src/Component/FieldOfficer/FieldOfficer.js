@@ -3,11 +3,6 @@ import Nav from '../Nav/Nav';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-
-
-
-
-
 const FieldOfficer = () => {
   const [users , setusers] = useState([]);
   let token = sessionStorage.getItem('token');
@@ -54,7 +49,7 @@ const FieldOfficer = () => {
       <td className='col-3'>{item.name}</td>
       <td className='col-3'>{item.username}</td>
       <td className='col-3'>{item.email}</td>
-      <td className='col-1'>{item.id==="1"?<p>Admin</p>:<p>F officer</p>}</td>
+      <td className='col-1'>{item.id=="1"?<p>Admin</p>:<p>F officer</p>}</td>
     </tr>
   </tbody>
 </table>
