@@ -63,7 +63,7 @@ module.exports = ((sequelize, type)=>{
         education:{
             type: type.ENUM,
             defaultValue: '0',
-            values: ["0", "1", "2"],
+            values: ["0", "1", "2","3", "4", "5","6"],
             comment: `0: 8th  1: 9th 2 : 10th 3 : 11th 4 : 12th 5 : Graduation 6 : Postgraduation`,
         },
         address:{

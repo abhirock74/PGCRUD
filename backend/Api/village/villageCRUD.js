@@ -1,8 +1,9 @@
 const Village = require('../../models/village');
 module.exports = {
     findAll: async (req, res)=>{
+        let {block_id} = req.headers;
         try {
-            let village = await  Village.findAll();
+            let village = await  Village.findAll({where:{block_id:block_id}});
             return res.status(200).json({message:"village List", Village:village})
         } catch (error) {
             return res.status(500).json({message: error.message})

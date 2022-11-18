@@ -1,8 +1,9 @@
 const Block = require('../../models/block');
 module.exports = {
     findAll: async (req, res)=>{
+        let {dist_id} = req.headers;
         try {
-            let block = await  Block.findAll();
+            let block = await  Block.findAll({where:{dist_id:dist_id}});
             return res.status(200).json({message:"Block List", block:block})
         } catch (error) {
             return res.status(500).json({message: error.message})

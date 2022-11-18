@@ -1,8 +1,10 @@
 const District = require('../../models/district');
 module.exports = {
     findAll: async (req, res)=>{
+        let {state_id} = req.headers;
+        // console.log(state_id)
         try {
-            let district = await  District.findAll();
+            let district = await  District.findAll({where:{state_id:state_id}});
             return res.status(200).json({message:"District List", District:district})
         } catch (error) {
             return res.status(500).json({message: error.message})

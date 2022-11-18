@@ -10,6 +10,7 @@ import State from "../State/State";
 import District from "../District/District";
 import Blocks from "../Blocks/Blocks";
 import Village from "../Village/Village";
+import Addbenificary from "../BenificaryForm/Addbenificary";
 
 const Router = () => {
   return (
@@ -26,6 +27,7 @@ const Router = () => {
           <Route path="/district" element={<Protected Component={District} />} />
           <Route path="/blocks" element={<Protected Component={Blocks} />} />
           <Route path="/village" element={<Protected Component={Village} />} />
+          <Route path="/addbenificary" element={<Protected Component={Addbenificary} />} />
 
         </Routes>
       </BrowserRouter>

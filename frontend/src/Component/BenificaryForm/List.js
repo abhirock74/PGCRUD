@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../Nav/Nav';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 const List = () => {
   const [users , setusers] = useState([]);
   let token = sessionStorage.getItem('token');
@@ -23,7 +24,7 @@ const List = () => {
       <Nav/>
       <div className='d-flex  justify-content-between mx-4 mt-3'>
       <h5 className='text-center mt-3'>Benificiary Lists</h5>
-      <button type="button" class="btn btn-primary px-5">Add Benificiary</button>
+      <Link to="/addbenificary" type="button" class="btn btn-primary px-5">Add Benificiary</Link>
       </div>
       <hr/>
       <table class="table">
@@ -47,7 +48,7 @@ const List = () => {
       <td className='col-3'>{item.first_name}</td>
       <td className='col-3'>{item.mobile}</td>
       <td className='col-3'>{item.email}</td>
-      <td className='col-1'>{item.gender=="1"?<p>Male</p>:<p>Female</p>}</td>
+      <td className='col-1'>{item.gender=="0"?<p>Male</p>:<p>Female</p>}</td>
     </tr>
   </tbody>
 </table>
