@@ -74,7 +74,7 @@ const AddFieldOfficer = () => {
              <option>----- select role -------</option>
             <option value="2">Field Officer</option>
             <option value="1">Admin</option>
-            <option value="">option 3</option>
+            {/* <option value="">option 3</option> */}
             {/* <option value="">Opel</option>
             <option value="audi">Audi</option> */}
           </select>

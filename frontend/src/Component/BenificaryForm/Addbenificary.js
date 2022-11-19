@@ -212,6 +212,7 @@ const AddBenificary = () => {
           <label htmlFor="education">Select Education :</label> <br />
           <select className='w-100 p-1' name="education" id="education" form="education"
           onChange={formik.handleChange} value={formik.values.education}>
+            <option selected>----Select Gender ----</option>
             <option value="0">8 th</option>
             <option value="1">9 th</option>
             <option value="2">10 th</option>

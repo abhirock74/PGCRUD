@@ -17,7 +17,7 @@ const FieldOfficer = () => {
     })
       .then((res) => {
         console.log(res.data)
-        setnotification(toast.success(res.data.message,{position:toast.POSITION.TOP_CENTER}))
+        setnotification(toast.success(res.data.message,{position:toast.POSITION.BOTTOM_LEFT}))
         setusers(res.data.user)
       })
   };
@@ -53,7 +53,7 @@ const FieldOfficer = () => {
       <td className='col-3'>{item.name}</td>
       <td className='col-3'>{item.username}</td>
       <td className='col-3'>{item.email}</td>
-      <td className='col-1'>{item.id=="1"?<p>Admin</p>:<p>F officer</p>}</td>
+      <td className='col-1'>{item.role=="1"?<p>Admin</p>:<p>F officer</p>}</td>
     </tr>
   </tbody>
 </table>
