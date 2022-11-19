@@ -50,7 +50,7 @@ const District = () => {
       <Nav/>
       <div className='d-flex  justify-content-between mx-4 mt-3'>
       <h5 className='text-center mt-3'>District Lists</h5>
-      <div className='d-flex px-4'>
+      <div className='d-flex  justify-content-between mx-4 mt-3'>
           <select onChange={handelState} className='w-100 p-1' name="state" id="state" form="state">
             <option selected>----Select State ----</option>
             {state.map((ab) => {
