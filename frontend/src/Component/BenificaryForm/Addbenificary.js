@@ -173,7 +173,7 @@ const AddBenificary = () => {
           <label htmlFor="village">Select Village :</label> <br />
           <select className='w-100 p-1' name="village" id="village" form="village"
           onChange={formik.handleChange} value={formik.values.village}>
-            <option selected>----Select Village ----</option>
+            <option selected value={0}>----Select Village ----</option>
             {village.map((ab) => {
             const {id} = ab
             return <option key={id} value={ab.id}>{ab.vill_name}</option>;

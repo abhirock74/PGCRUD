@@ -17,7 +17,7 @@ const State = () => {
     })
       .then((res) => {
         console.log(res.data)
-        setnotification(toast.success(res.data.message,{position:toast.POSITION.TOP_CENTER}))
+        setnotification(toast.success(res.data.message,{position:toast.POSITION.BOTTOM_LEFT}))
         setstate(res.data.state)
       })
   };

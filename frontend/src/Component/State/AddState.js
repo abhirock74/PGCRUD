@@ -28,7 +28,7 @@ const AddState = () => {
           })
           .then((res) => {
             // console.log(res);
-            setnotification(toast.success(res.data.message,{position:toast.POSITION.TOP_CENTER}))
+            setnotification(toast.success(res.data.message,{position:toast.POSITION.BOTTOM_LEFT}))
             console.log(res.data.message);
             if(res.data.message=="State create Successful"){
               navigate('/state');

@@ -21,7 +21,7 @@ const District = () => {
     })
       .then((res) => {
         console.log(res.data)
-        setnotification(toast.success(res.data.message,{position:toast.POSITION.TOP_CENTER}))
+        setnotification(toast.success(res.data.message,{position:toast.POSITION.BOTTOM_LEFT}))
         setdistrict(res.data.District)
       })
   };
@@ -60,13 +60,13 @@ const District = () => {
           </select>
         </div>
 
-      <Link to="/addstate" type="button" class="btn btn-primary px-5">Add district</Link>
+      <Link to="/addDistrict" type="button" class="btn btn-primary px-5">Add district</Link>
       </div>
       <hr/>
       {district.length=='0'?<><h4 className='d-flex  justify-content-center align-self-center py-5 mt-5'>Please Select State</h4></>:<table class="table">
       <thead>
     <tr>
-      <th className='col-2'>No</th>
+      <th className='col-2'>ID</th>
       <th className='col-10'>Name</th>
     </tr>
   </thead>
