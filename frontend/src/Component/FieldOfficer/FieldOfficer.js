@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Nav from '../Nav/Nav';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FieldOfficer = () => {
   const [users , setusers] = useState([]);
+  const [notification, setnotification] = useState('')
   let token = sessionStorage.getItem('token');
   const getCompany = () => {
     axios.get('http://localhost:8080/api/users',{
@@ -14,6 +17,7 @@ const FieldOfficer = () => {
     })
       .then((res) => {
         console.log(res.data)
+        setnotification(toast.success(res.data.message,{position:toast.POSITION.TOP_CENTER}))
         setusers(res.data.user)
       })
   };
@@ -57,6 +61,7 @@ const FieldOfficer = () => {
       
     );
   })}
+     <ToastContainer />
     </div>
   )
 }

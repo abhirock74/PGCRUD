@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import Nav from '../Nav/Nav';
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddFieldOfficer = () => {
+  const [notification, setnotification] = useState('')
   const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
@@ -25,13 +28,16 @@ const AddFieldOfficer = () => {
           })
           .then((res) => {
             // console.log(res);
+            setnotification(toast.error(res.data.message,{position:toast.POSITION.TOP_CENTER}))
             console.log(res.data.message);
             if(res.data.message=="user create Successful"){
               navigate('/fieldofficer');
             }
           })
           .catch((err) => {
+            setnotification(toast.error(err.response.data.message))
             console.log(err.response.data.message);
+            
           });
         },
       });
@@ -65,6 +71,7 @@ const AddFieldOfficer = () => {
           <label htmlFor="role ">Role :</label> <br />
           <select className='w-100 p-1' name="role" id="role" form="role"
           onChange={formik.handleChange} value={formik.values.role }>
+             <option>----- select role -------</option>
             <option value="2">Field Officer</option>
             <option value="1">Admin</option>
             <option value="">option 3</option>
@@ -80,6 +87,7 @@ const AddFieldOfficer = () => {
           <button class="btn btn-primary mt-3 px-4 py-2" type="submit">Submit</button>
         </form>
         </div>
+        <ToastContainer />
         </>
       );
 }

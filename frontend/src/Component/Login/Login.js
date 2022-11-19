@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './login.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 import axios from 'axios'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const initialValues = {
@@ -17,6 +19,7 @@ const initialValues = {
 
 const Login = () => {
   const navigate = useNavigate();
+  const [notification, setnotification] = useState('')
 const onSubmit = values =>{
     console.log(values);
     axios
@@ -25,7 +28,9 @@ const onSubmit = values =>{
       { username: values.username, password: values.password },
     )
     .then((res) => {
+      console.log(res)
       sessionStorage.setItem('token', (res.data.token))
+      setnotification(toast.success(res.data.message,{position:toast.POSITION.TOP_CENTER}))
       if (res.data.token) {
        console.log(res.data.token)
         navigate('/benificarylists')
@@ -33,14 +38,14 @@ const onSubmit = values =>{
         let payload = token.split(".")
         let data = atob(payload[1]);
         console.log(JSON.parse(data))
-
         sessionStorage.setItem('paylode', data)
       } else {
         console.log("unauthorized")
       }
     })
     .catch((err) => {
-    //   seterror(err.response.data.message)
+    setnotification(toast.error(err.response.data.message,{position:toast.POSITION.TOP_CENTER}))
+      
     });
 
 }
@@ -117,7 +122,7 @@ const onSubmit = values =>{
     </div>
   </div>
 </section>
-
+<ToastContainer />
     </div>
   )
 }

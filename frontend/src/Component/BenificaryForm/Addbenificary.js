@@ -3,8 +3,11 @@ import { useFormik } from 'formik';
 import Nav from '../Nav/Nav';
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddBenificary = () => {
+  const [notification, setnotification] = useState('')
   const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
@@ -29,6 +32,7 @@ const AddBenificary = () => {
             })
             .then((res) => {
               // console.log(res);
+              setnotification(toast.error(res.data.message,{position:toast.POSITION.TOP_CENTER}))
               console.log(res.data.message);
               if(res.data.message=="beneficiary create Successful"){
                 navigate('/benificarylists');
@@ -36,6 +40,7 @@ const AddBenificary = () => {
             })
             .catch((err) => {
               console.log(err.response.data.message);
+              setnotification(toast.success(err.response.data.message,{position:toast.POSITION.TOP_CENTER}))
             });
           },
       });
@@ -229,6 +234,7 @@ const AddBenificary = () => {
           <button class="btn btn-primary mt-3 px-4 py-2" type="submit">Submit</button>
         </form>
         </div>
+        <ToastContainer />
         </>
       );
 }

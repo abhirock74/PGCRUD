@@ -22,7 +22,7 @@ const Login = async(req, res)=>{
                     token:token
                 })
             }else{
-                return res.status(400).json({message:'email and password are incorrect'})
+                return res.status(400).json({message:'username and password are incorrect'})
             }
         }
        

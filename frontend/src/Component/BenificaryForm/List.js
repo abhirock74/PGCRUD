@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Nav from '../Nav/Nav';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const List = () => {
   const [users , setusers] = useState([]);
+  const [notification, setnotification] = useState('')
   let token = sessionStorage.getItem('token');
   const getCompany = () => {
     axios.get('http://localhost:8080/api/beneficiary',{
@@ -13,12 +16,14 @@ const List = () => {
     })
       .then((res) => {
         console.log(res.data)
+        setnotification(toast.success(res.data.message,{position:toast.POSITION.TOP_CENTER}))
         setusers(res.data.beneficiary)
+        
       })
   };
   useEffect(() => {
     getCompany()
-  }, []);
+  },[]);
   return (
     <div>
       <Nav/>
@@ -56,6 +61,7 @@ const List = () => {
       
     );
   })}
+  <ToastContainer />
     </div>
   )
 }

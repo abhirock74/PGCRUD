@@ -20,7 +20,7 @@ module.exports = {
                     return res.status(200).json({message:"user create Successful", user:user})
                 }
             }else{
-            return res.status(200).json({message:"username && name && password && email role(defult= 2=Fied Officer, 1=Admin ) are require"})
+            return res.status(200).json({message:"All field are required"})
             }
         } catch (error) {
             return res.status(500).json({message: error.message})
