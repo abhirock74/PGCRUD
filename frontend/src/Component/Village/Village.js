@@ -125,10 +125,10 @@ const Village = () => {
         </div>
 
 
-      <Link to="/AddBlock" type="button" class="btn btn-primary px-5">Add Village</Link>
+      <Link to="/AddVillage" type="button" class="btn btn-primary px-5 mt-2">Add Village</Link>
       </div>
       <hr/>
-      {block.length=='0'?<><h4 className='d-flex  justify-content-center align-self-center py-5 mt-5'>Please Select State and District</h4>
+      {village.length=='0'?<><h4 className='d-flex  justify-content-center align-self-center py-5 mt-5'>Please Select State and District and Village</h4>
       </>:<table class="table">
       <thead>
     <tr>

@@ -38,7 +38,8 @@ module.exports = {
     },
     delete:async (req, res)=>{
         try {
-            id=req.params.state_id;
+            id=req.params.id;
+            console.log(id)
             const state = await State.destroy({where:{id:id}});
             return res.status(200).json({message: "state deleted", state})
 

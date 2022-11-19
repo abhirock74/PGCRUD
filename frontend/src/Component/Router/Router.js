@@ -14,6 +14,7 @@ import Addbenificary from "../BenificaryForm/Addbenificary";
 import AddState from "../State/AddState";
 import AddDistrict from "../District/AddDistrict";
 import AddBlock from "../Blocks/AddBlock";
+import AddVillage from "../Village/AddVillage";
 const Router = () => {
   return (
     <>
@@ -33,6 +34,7 @@ const Router = () => {
           <Route path="/addstate" element={<Protected Component={AddState} />} />
           <Route path="/addDistrict" element={<Protected Component={AddDistrict} />} />
           <Route path="/AddBlock" element={<Protected Component={AddBlock} />} />
+          <Route path="/AddVillage" element={<Protected Component={AddVillage} />} />
           
 
         </Routes>
