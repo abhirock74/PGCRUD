@@ -15,7 +15,7 @@ module.exports = ((sequelize, type)=>{
              }
         },
         district:{
-            type:type.INTEGER(30),
+            type:type.INTEGER(10),
             require:true,
             references: {
                 model: 'districts', 
@@ -23,7 +23,7 @@ module.exports = ((sequelize, type)=>{
              }
         },
         block:{
-            type:type.INTEGER(30),
+            type:type.INTEGER(10),
             require:true,
             references: {
                 model: 'blocks', 
@@ -31,7 +31,7 @@ module.exports = ((sequelize, type)=>{
              }
         },
         village:{
-            type:type.INTEGER(30),
+            type:type.INTEGER(10),
             require:true,
             references: {
                 model: 'villages', 

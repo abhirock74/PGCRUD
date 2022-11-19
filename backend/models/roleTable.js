@@ -9,6 +9,7 @@ module.exports = ((sequelize, type) => {
 
         name: {
             type: type.STRING(25),
+            // Admin or Field Offier
             require: true,
             unique: {
                 args: true,

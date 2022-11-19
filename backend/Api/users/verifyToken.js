@@ -8,7 +8,7 @@ module.exports= async(req, res, next)=>{
             let decoded = JWT.verify(token, JWT_SECRET);
             // let {id, name, username, email, role} = decoded;
             req.decoded =decoded;
-            // console.log(decoded)
+            console.log(decoded)
             next();
         }else{
             return res.status(401).json({message:'unauthorize token'});

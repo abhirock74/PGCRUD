@@ -15,7 +15,7 @@ let options={
     },
 };
 Object.assign(options, {host:"localhost"});
-sequelize = new Sequelize("pg_crud", "postgres","abhirock74", options);
+sequelize = new Sequelize("postgres", "postgres","abhirock74", options);
 sequelize.authenticate()
 .then(()=>{
     console.log(`Database connected`)
