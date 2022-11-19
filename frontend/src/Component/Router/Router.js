@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../Login/Login";
 import Protected from "./Protected";
-import Home from "../Home/Home";
 import List from "../BenificaryForm/List";
 import FieldOfficer from "../FieldOfficer/FieldOfficer";
 import AddFieldOfficer from "../FieldOfficer/AddFieldOfficer";
@@ -18,11 +17,9 @@ import AddVillage from "../Village/AddVillage";
 const Router = () => {
   return (
     <>
-    <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          {/* <Route path="/home" element={<Home />} /> */}
-          <Route path="/home" element={<Protected Component={Home} />} />
           <Route path="/benificarylists" element={<Protected Component={List} />} />
           <Route path="/fieldofficer" element={<Protected Component={FieldOfficer} />} />
           <Route path="/fieldofficer/add" element={<Protected Component={AddFieldOfficer} />} />
@@ -35,7 +32,7 @@ const Router = () => {
           <Route path="/addDistrict" element={<Protected Component={AddDistrict} />} />
           <Route path="/AddBlock" element={<Protected Component={AddBlock} />} />
           <Route path="/AddVillage" element={<Protected Component={AddVillage} />} />
-          
+
 
         </Routes>
       </BrowserRouter>
