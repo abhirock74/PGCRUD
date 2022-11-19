@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const state= require('./districtCrud');
+const state = require('./districtCrud');
 router.get('/', state.findAll);
 router.post('/', state.create);
 router.put('/:id', state.update);
