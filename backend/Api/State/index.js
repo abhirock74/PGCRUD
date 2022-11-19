@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const state= require('./stateCRUD');
+const state = require('./stateCRUD');
 router.get('/', state.findAll);
 router.post('/', state.create);
 router.put('/:id', state.update);
